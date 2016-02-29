@@ -34,11 +34,11 @@
       <at-carbon-button id="button" disabled$="[[disabled]]" class="background-green">
         <template is="dom-if" if="{{_isSubmit(xtype)}}">
           <at-carbon-icon-button disabled$="[[disabled]]" icon="now:checkmark" color="white"></at-carbon-icon-button>
-          <iron-label disabled$="[[disabled]]" class="color-white">Submit</iron-label>
+          <iron-label id="submitLabel" disabled$="[[disabled]]" class="color-white">Submit</iron-label>
         </template>
         <template is="dom-if" if="{{_isCancel(xtype)}}">
           <at-carbon-icon-button disabled$="[[disabled]]" icon="now:cancel" color="black"></at-carbon-icon-button>
-          <iron-label disabled$="[[disabled]]" class="color-black">Cancel</iron-label>
+          <iron-label id="cancelLabel" disabled$="[[disabled]]" class="color-black">Cancel</iron-label>
         </template>
       </at-carbon-button>
     </div>
@@ -50,7 +50,8 @@
       properties: {
         disabled: {
           type: Boolean,
-          value: false
+          value: false,
+          observer: 'disabledChanged'
         },
         xtype: {
           type: String,
@@ -77,6 +78,20 @@
       xtypeChanged: function (newValue, oldValue) {
         var button = this.$.button;
         this.toggleClass('background-green', newValue === "submit", button);
+      },
+      disabledChanged: function (newValue, oldValue) {
+        if (this.xtype === "submit") {
+          var button = this.$.button;
+          this.toggleClass('background-green', !newValue, button);
+
+          var submitLabel = this.$$('#submitLabel');
+          this.toggleClass('disabled', newValue, submitLabel);
+          this.toggleClass('color-white', !newValue, submitLabel);
+          this.toggleClass('color-black', newValue, submitLabel);
+        } else {
+          var cancelLabel = this.$$('#cancelLabel');
+          this.toggleClass('disabled', newValue, cancelLabel);
+        }
       }
     });
   </script>
