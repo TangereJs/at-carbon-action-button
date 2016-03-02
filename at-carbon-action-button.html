@@ -1,4 +1,5 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../tangere/Tangere.html">
+<link rel="import" href="../at-i18n/at-i18n-behavior.html">
 <link rel="import" href="../at-theme/at-theme.html">
 <link rel="import" href="../at-carbon-button/at-carbon-button.html">
 <link rel="import" href="../at-carbon-icon-button/at-carbon-icon-button.html">
@@ -34,11 +35,11 @@
       <at-carbon-button id="button" disabled$="[[disabled]]" class="background-green">
         <template is="dom-if" if="{{_isSubmit(xtype)}}">
           <at-carbon-icon-button disabled$="[[disabled]]" icon="now:checkmark" color="white"></at-carbon-icon-button>
-          <iron-label id="submitLabel" disabled$="[[disabled]]" class="color-white">Submit</iron-label>
+          <iron-label id="submitLabel" disabled$="[[disabled]]" class="color-white">{{_getText("Submit")}}</iron-label>
         </template>
         <template is="dom-if" if="{{_isCancel(xtype)}}">
           <at-carbon-icon-button disabled$="[[disabled]]" icon="now:cancel" color="black"></at-carbon-icon-button>
-          <iron-label id="cancelLabel" disabled$="[[disabled]]" class="color-black">Cancel</iron-label>
+          <iron-label id="cancelLabel" disabled$="[[disabled]]" class="color-black">{{_getText("Cancel")}}</iron-label>
         </template>
       </at-carbon-button>
     </div>
@@ -47,6 +48,7 @@
     'use strict';
     Polymer({
       is: 'at-carbon-action-button',
+      behaviors: [ Tangere.behaviors.i18n ],
       properties: {
         disabled: {
           type: Boolean,
@@ -72,6 +74,9 @@
       },
       _isCancel: function (xtype) {
         return xtype === "cancel";
+      },
+      _getText: function (text) {
+        return this.T(text);
       },
       ready: function() {
       },
