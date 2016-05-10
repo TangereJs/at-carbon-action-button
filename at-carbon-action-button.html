@@ -80,9 +80,8 @@
         var atContainer = this.$.atContainer;
         var self = this;
         atContainer.addEventListener('tap', function(event) {
-          event.stopPropagation();
-          if (!self.disabled) {
-            self.fire('tap');
+          if (self.disabled) {
+            event.stopPropagation();
           }
         });
       },
