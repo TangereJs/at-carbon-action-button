@@ -50,11 +50,25 @@
       is: 'at-carbon-action-button',
       behaviors: [ Tangere.behaviors.i18n ],
       properties: {
+        /**
+         * Disables the button when true
+         * 
+         * @property disabled
+         * @type Boolean
+         * @default false 
+         */
         disabled: {
           type: Boolean,
           value: false,
           observer: 'disabledChanged'
         },
+        /**
+         * Sets button type. Can be Submit button and Cancel button
+         * 
+         * @property xtype
+         * @type String
+         * @default submit 
+         */
         xtype: {
           type: String,
           value: 'submit',
