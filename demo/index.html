@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-carbon-action-button demo page</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../at-theme/at-theme.html">
+  <link rel="import" href="../at-carbon-action-button.html">
+  <link rel="import" href="../../at-doc-snippet/at-doc-snippet.html" />
+
+  <style>
+    .container {
+      margin: 16px 64px;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <at-doc-snippet class="container">
+    <template>
+      <at-carbon-action-button xtype="submit"></at-carbon-action-button>
+    </template>
+  </at-doc-snippet>
+
+  <at-doc-snippet class="container">
+    <template>
+      <at-carbon-action-button disabled xtype="submit"></at-carbon-action-button>
+    </template>
+  </at-doc-snippet>
+
+  <at-doc-snippet class="container">
+    <template>
+      <at-carbon-action-button xtype="cancel"></at-carbon-action-button>
+    </template>
+  </at-doc-snippet>
+
+  <at-doc-snippet class="container">
+    <template>
+      <at-carbon-action-button disabled xtype="cancel"></at-carbon-action-button>
+    </template>
+  </at-doc-snippet>
+</body>
+
+</html>
